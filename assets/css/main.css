@@ -92,6 +92,8 @@ input, select, textarea {
 
 	html {
 		box-sizing: border-box;
+		scroll-behavior: smooth;
+		scroll-padding-top: 100px; /* Account for sticky navbar */
 	}
 
 	*, *:before, *:after {
@@ -4095,7 +4097,7 @@ input, select, textarea {
 	display:               grid;
 	grid-template-columns: 1fr 1fr;
 	column-gap:            2rem;
-	align-items:           start;
+	align-items:           center;  /* vertically center text relative to image */
   }
   
   /* section title + divider */
@@ -4117,6 +4119,7 @@ input, select, textarea {
 	font-weight:    700;
 	text-transform: uppercase;
 	margin-bottom:  1rem;
+	opacity: 0.85;                 /* reduce visual weight */
   }
   
   /* education list */
@@ -4130,6 +4133,7 @@ input, select, textarea {
 	align-items:   flex-start;
 	gap:           1rem;
 	margin-bottom: 1.5rem;
+	opacity: 0.85;                /* reduce visual weight of education section */
   }
   /* the accent bar */
   .education-bar {
@@ -4144,15 +4148,17 @@ input, select, textarea {
 	flex-direction: column;
   }
   .education-degree {
-	font-size:   1.125rem;
+	font-size:   1rem;             /* reduced from 1.125rem (10-15% smaller) */
 	font-weight: 700;
 	margin:      0;
+	opacity: 0.85;                 /* reduce visual weight */
   }
   .education-institution {
-	font-size:   1rem;
+	font-size:   0.9rem;           /* reduced from 1rem */
 	font-weight: 300;
 	color:       #cccccc;
 	margin:      0.25rem 0 0;
+	opacity: 0.8;                  /* slightly more transparent */
   }
   
   /* descriptive paragraph */
@@ -4163,6 +4169,46 @@ input, select, textarea {
 	max-width:    600px;
   }
   
+  /* Typography hierarchy - Level 1: Intro/Closing lines */
+  .about-description .intro-line,
+  .about-description .closing-line {
+	margin: 0 0 1.5rem 0;
+	font-size: 1.25rem;
+	line-height: 1.6;
+	color: #e0e0e0;
+  }
+  
+  /* Typography hierarchy - Level 2: Highlight bullets */
+  .about-highlights {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 1.5rem 0;
+  }
+  
+  .about-highlights li {
+	margin: 0 0 1rem 0;
+	padding-left: 1.5rem;
+	position: relative;
+	font-size: 1.1rem;
+	line-height: 1.6;
+	color: #e0e0e0;
+	font-weight: 500;              /* slightly bolder for emphasis */
+  }
+  
+  .about-highlights li::before {
+	content: "•";
+	position: absolute;
+	left: 0;
+	color: #9bf1ff;               /* accent color for bullets */
+	font-weight: bold;
+  }
+  
+  .about-highlights li:last-child {
+	margin-bottom: 0;
+  }
+  
+  /* Typography hierarchy - Level 3: Supporting text (handled by default) */
+  
   /* image styling */
   .about-image {
 	justify-self: end;           /* hug the right side */
@@ -4170,10 +4216,11 @@ input, select, textarea {
   .about-image img {
 	display:      block;
 	width:        100%;
-	max-width:    500px;         /* never exceed 500px wide */
+	max-width:    450px;         /* reduced from 500px (10% smaller) */
 	height:       auto;
-	max-height: 600px;
+	max-height: 540px;           /* reduced from 600px (10% smaller) */
 	object-fit:   cover;
+	object-position: top center;  /* show top half of the image */
 	border-radius: 16px;
   }
   
@@ -4240,8 +4287,17 @@ input, select, textarea {
   
   .about-description {
 	color:       #e0e0e0;        /* soften from pure white */
-	line-height: 1.7;            /* extra breathing room */
-	margin-top:  3rem;           /* create more separation */
+	line-height: 1.6;            /* increased line spacing */
+	margin-top:  2.5rem;         /* spacing between Education and About */
+  }
+  
+  /* Additional spacing between sections */
+  .about-subtitle {
+	margin-bottom: 1.25rem;       /* more space after Education heading */
+  }
+  
+  .education-list {
+	margin-bottom: 1.5rem;        /* space between education list and description */
   }
   
   /* if you want your subheadings a hair lighter too */
@@ -4256,6 +4312,7 @@ input, select, textarea {
   .about-image img {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 	max-width:  450px;           /* keep it in proportion */
+	object-position: top center;  /* show top half of the image */
   }
   
   
@@ -4307,7 +4364,8 @@ input, select, textarea {
 	/* 2. Resize the picture so it feels like a portrait, not a banner */
 	.about-image img  {
 	  width:  65vw;                          /* fluid, never wider than 65 % of viewport */
-	  max-width: 260px;                      /* hard cap so big phones don’t get huge */
+	  max-width: 260px;                      /* hard cap so big phones don't get huge */
+	  object-position: top center;            /* show top half of the image */
 	}
   
 	/* 3. Tidy spacing */
@@ -4317,17 +4375,541 @@ input, select, textarea {
   
   
 /* ─────────────────────────────────────────────────────────
-   EXPERIENCE TIMELINE - FINAL OVERRIDE
-   (Replace the whole block you have with this)
+   EXPERIENCE – River/Flowchart Style Flow
 ─────────────────────────────────────────────────────────*/
 
-/* ---------- 1.  Wrapper ---------- */
-#experience .timeline{
-    position:relative;
-    max-width:1200px;            /* keeps the timeline centred on very wide screens   */
-    margin:0 auto;               /* centres the wrapper itself                        */
-    padding:2.5rem 0;
+/* Experience flow container */
+.experience-flow {
+  position: relative;
+  max-width: 1400px;                /* wider container for more space */
+  margin: 0 auto;
+  padding: 3rem 2rem;
 }
+
+/* Flowing connecting line - centered vertical timeline - minimal glow */
+.experience-flow::before {
+  content: "";
+  position: absolute;
+  left: 50%;                       /* centered */
+  transform: translateX(-50%);
+  top: 0;
+  bottom: 0;
+  width: 2px;                      /* thinner, more subtle */
+  background: linear-gradient(to bottom, 
+    rgba(155, 241, 255, 0.3) 0%,
+    rgba(155, 241, 255, 0.2) 30%,
+    rgba(155, 241, 255, 0.15) 60%,
+    rgba(155, 241, 255, 0.1) 100%);
+  z-index: 1;
+  border-radius: 1px;
+  box-shadow: none;                /* no glow on timeline */
+}
+
+/* Individual experience item - alternating sides */
+.experience-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 150px 1fr;  /* left content | timeline space (wider buffer) | right content */
+  gap: 0;
+  margin-bottom: 4.5rem;
+  z-index: 2;
+  align-items: flex-start;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s ease-out forwards;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.experience-item:nth-child(1) { animation-delay: 0.1s; }
+.experience-item:nth-child(2) { animation-delay: 0.2s; }
+.experience-item:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Visual progression - current vs past */
+.experience-current {
+  opacity: 1 !important;
+  transform: scale(1) !important;
+}
+
+.experience-past {
+  opacity: 0.92;                   /* subtle fade for past */
+  transform: scale(0.98);          /* slight scale down */
+}
+
+/* Remove item-level hover - only content block should trigger */
+
+/* Odd items (1st, 3rd) - on LEFT side */
+.experience-item:nth-child(odd) {
+  grid-template-columns: 1fr 150px 0;  /* left content | timeline space (wider buffer) | empty */
+}
+
+.experience-item:nth-child(odd) .experience-content {
+  grid-column: 1;
+  justify-self: flex-end;
+  text-align: left;                 /* left-aligned text */
+  border-left: none;
+  border-right: 2px solid rgba(155, 241, 255, 0.2);  /* thin accent border */
+  border-radius: 0;
+  padding-right: 2rem;
+  padding-left: 2rem;
+  margin-right: 0;                  /* no margin, let grid handle spacing */
+  background: transparent;          /* no background */
+  max-width: calc(50% - 100px);     /* ensure it doesn't cross timeline */
+  width: 100%;                      /* use available space */
+  box-sizing: border-box;
+}
+
+.experience-item:nth-child(odd) .experience-content:hover {
+  border-right-color: rgba(155, 241, 255, 0.35);
+}
+
+/* Even items (2nd) - on RIGHT side */
+.experience-item:nth-child(even) {
+  grid-template-columns: 0 150px 1fr;  /* empty | timeline space (wider buffer) | right content */
+}
+
+.experience-item:nth-child(even) .experience-content {
+  grid-column: 3;
+  justify-self: flex-start;
+  text-align: left;                 /* left-aligned text */
+  border-left: 2px solid rgba(155, 241, 255, 0.2);  /* thin accent border */
+  border-right: none;
+  border-radius: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin-left: 0;                   /* no margin, let grid handle spacing */
+  background: transparent;          /* no background */
+  max-width: calc(50% - 100px);     /* ensure it doesn't cross timeline */
+  width: 100%;                      /* use available space */
+  box-sizing: border-box;
+}
+
+.experience-item:nth-child(even) .experience-content:hover {
+  border-left-color: rgba(155, 241, 255, 0.35);
+}
+
+.experience-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Past nodes - subtle, flat */
+.experience-item::before {
+  content: "";
+  position: absolute;
+  left: 50%;                       /* centered on timeline */
+  transform: translateX(-50%);
+  top: 0.75rem;
+  width: 12px;                     /* smaller for past */
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(155, 241, 255, 0.4);  /* muted */
+  border: 2px solid rgba(20, 30, 40, 0.95);
+  z-index: 3;
+  box-shadow: none;                /* no glow for past */
+}
+
+/* Current position - larger, strong glow */
+.experience-current::before {
+  width: 18px;                     /* larger for current */
+  height: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #9bf1ff;
+  border: 3px solid rgba(20, 30, 40, 0.95);
+  box-shadow: 0 0 0 3px rgba(155, 241, 255, 0.3), 
+              0 0 0 6px rgba(155, 241, 255, 0.15),
+              0 0 15px rgba(155, 241, 255, 0.5);  /* strong glow only for current */
+  animation: pulseCurrent 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.05); }
+}
+
+@keyframes pulseCurrent {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.1); }
+}
+
+/* Connecting lines from timeline to content - alternating directions */
+.experience-item::after {
+  content: "";
+  position: absolute;
+  top: 2rem;
+  width: 2px;                      /* thinner */
+  height: calc(100% - 2rem);
+  z-index: 1;
+}
+
+/* Odd items - line goes LEFT from timeline */
+.experience-item:nth-child(odd)::after {
+  left: calc(50% - 30px);          /* start from timeline edge */
+  width: 30px;                     /* horizontal line length */
+  height: 2px;                     /* horizontal line */
+  background: linear-gradient(to left,
+    rgba(155, 241, 255, 0.3) 0%,
+    rgba(155, 241, 255, 0.2) 50%,
+    transparent 100%);
+  top: 1.5rem;                     /* align with node */
+}
+
+/* Even items - line goes RIGHT from timeline */
+.experience-item:nth-child(even)::after {
+  left: calc(50% + 30px);          /* start from timeline edge */
+  width: 30px;                     /* horizontal line length */
+  height: 2px;                     /* horizontal line */
+  background: linear-gradient(to right,
+    rgba(155, 241, 255, 0.3) 0%,
+    rgba(155, 241, 255, 0.2) 50%,
+    transparent 100%);
+  top: 1.5rem;                     /* align with node */
+}
+
+.experience-item:last-child::after {
+  display: none;
+}
+
+/* Date group - anchored to content block, reduced weight */
+.experience-date-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+  align-items: flex-start;
+}
+
+.experience-item:nth-child(odd) .experience-date-group {
+  align-items: flex-start;          /* left-aligned */
+}
+
+.date-text {
+  font-size: 0.85rem;              /* smaller, supporting */
+  font-weight: 500;                /* lighter weight */
+  color: #a0a0a0;                  /* muted color */
+  letter-spacing: 0.3px;
+  padding: 0;
+  background: none;
+  border: none;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.experience-item:nth-child(odd) .date-text {
+  text-align: left;                 /* left-aligned */
+}
+
+/* Duration badge - subtle, integrated */
+.duration-badge {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #777;                     /* very muted */
+  padding: 0;
+  background: none;
+  border: none;
+  text-align: left;
+  letter-spacing: 0.2px;
+}
+
+.experience-item:nth-child(odd) .duration-badge {
+  text-align: left;                 /* left-aligned */
+}
+
+/* Content column - flowing with subtle background */
+.experience-content {
+  flex: 1;
+  padding: 1rem 2rem 1rem 2rem;  /* consistent padding */
+  padding-bottom: 0.5rem;
+  position: relative;
+  background: transparent;          /* no background */
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.experience-content:hover {
+  padding-bottom: 1.5rem;          /* maintain padding when expanded */
+}
+
+/* Company name - PRIMARY emphasis */
+.company-name {
+  font-weight: 800;                /* bolder */
+  color: #ffffff;                  /* white for maximum prominence */
+  font-size: 1.75rem;              /* larger than role */
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.experience-content:hover .company-name {
+  color: #9bf1ff;                  /* accent color on hover as hint */
+}
+
+/* Company/meta info - restructured */
+.experience-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0;                 /* no margin when collapsed */
+  flex-wrap: wrap;
+  transition: margin-bottom 0.3s ease;
+  align-items: flex-start;          /* all left-aligned */
+  text-align: left;                 /* all left-aligned */
+}
+
+.experience-content:hover .experience-meta {
+  margin-bottom: 1rem;              /* add margin on hover */
+}
+
+/* Role titles - secondary emphasis */
+.experience-role {
+  font-size: 1.3rem;               /* smaller than company */
+  font-weight: 600;                /* lighter weight */
+  margin: 0;
+  color: #9bf1ff;                 /* accent color for secondary */
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.meta-separator {
+  color: #666;
+  font-weight: 300;
+}
+
+.company-location {
+  color: #a0a0a0;
+  font-weight: 400;
+}
+
+/* Summary - hidden by default, shown on hover */
+.experience-summary {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #d0d0d0;
+  margin: 0;
+  font-weight: 400;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease, max-height 0.4s ease, margin 0.4s ease;
+}
+
+.experience-content:hover .experience-summary {
+  opacity: 1;
+  max-height: 200px;                /* enough for content */
+  margin: 0 0 1.5rem 0;             /* reveal spacing */
+}
+
+/* Experience highlights - hidden by default, shown on hover */
+.experience-highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.4s ease 0.1s, max-height 0.4s ease 0.1s; /* slight delay for cascade */
+}
+
+.experience-content:hover .experience-highlights {
+  opacity: 1;
+  max-height: 500px;                /* enough for all bullets */
+}
+
+.experience-highlights {
+  text-align: left;                  /* all left-aligned */
+}
+
+.experience-highlights li {
+  position: relative;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.8;
+  color: #b8b8b8;
+  font-size: 0.95rem;
+  font-weight: 300;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.experience-content:hover .experience-highlights li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.experience-content:hover .experience-highlights li:nth-child(1) {
+  transition-delay: 0.15s;
+}
+
+.experience-content:hover .experience-highlights li:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.experience-content:hover .experience-highlights li:nth-child(3) {
+  transition-delay: 0.25s;
+}
+
+.experience-content:hover .experience-highlights li:nth-child(4) {
+  transition-delay: 0.3s;
+}
+
+.experience-highlights li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #9bf1ff;
+  font-weight: normal;
+  font-size: 0.9rem;
+  opacity: 0.6;
+  top: 0.1rem;
+}
+
+.experience-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .experience-flow {
+    padding: 2rem 1rem;
+  }
+  
+  .experience-flow::before {
+    left: 1.5rem;
+    transform: none;
+    width: 3px;
+  }
+  
+  .experience-item {
+    grid-template-columns: 1fr !important;  /* single column on mobile */
+    gap: 1rem;
+    padding-left: 3rem;
+    margin-bottom: 3rem;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  
+  .experience-item:nth-child(even),
+  .experience-item:nth-child(odd) {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Date group is now inside content, no separate positioning needed */
+  
+  .experience-item:nth-child(even) .experience-content,
+  .experience-item:nth-child(odd) .experience-content {
+    grid-column: 1;
+    justify-self: stretch;
+    text-align: left !important;
+    border-left: 2px solid rgba(155, 241, 255, 0.2) !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: 100% !important;
+  }
+  
+  .experience-item:nth-child(even) .experience-content:hover,
+  .experience-item:nth-child(odd) .experience-content:hover {
+    border-left-color: rgba(155, 241, 255, 0.4) !important;
+  }
+  
+  .experience-item:nth-child(even) .experience-meta,
+  .experience-item:nth-child(odd) .experience-meta {
+    align-items: flex-start !important;
+    text-align: left !important;
+  }
+  
+  .experience-item::before {
+    left: calc(1.5rem - 8px);
+    width: 14px;
+    height: 14px;
+  }
+  
+  .experience-current::before {
+    width: 16px;
+    height: 16px;
+    left: calc(1.5rem - 8px);
+  }
+  
+  .experience-item::after {
+    left: calc(1.5rem + 2px);
+    height: 1rem;
+    width: 2px;
+  }
+  
+  .experience-date-group {
+    margin-bottom: 0.75rem;
+  }
+  
+  .date-text {
+    font-size: 0.8rem;
+  }
+  
+  .duration-badge {
+    font-size: 0.65rem;
+  }
+  
+  .experience-content {
+    padding: 1.25rem 1.5rem;
+    padding-left: 1.5rem;
+  }
+  
+  .company-name {
+    font-size: 1.4rem;
+  }
+  
+  .experience-role {
+    font-size: 1.1rem;
+  }
+  
+  .experience-meta {
+    gap: 0.3rem;
+    margin-bottom: 0;
+  }
+  
+  .experience-content:hover .experience-meta {
+    margin-bottom: 0.75rem;
+  }
+  
+  .experience-summary {
+    font-size: 1rem;
+  }
+  
+  .experience-content:hover .experience-summary {
+    max-height: 300px;
+  }
+  
+  .experience-content:hover .experience-highlights {
+    max-height: 600px;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────
+   EXPERIENCE – Override old timeline styles (disabled)
+─────────────────────────────────────────────────────────*/
+
+/* Disable old timeline styles */
+#experience .timeline,
+#experience .timeline-item,
+#experience .flip-card,
+#experience .card-face {
+  display: none !important;
+}
+
+/* OLD TIMELINE CODE BELOW - DISABLED
+─────────────────────────────────────────────────────────*/
 
 /* ---------- 2.  Centre-line ---------- */
 #experience .timeline::before{
@@ -4346,6 +4928,7 @@ input, select, textarea {
 #experience .timeline-item{
     position:relative;
     width:320px;                /* fixed width => every block is identical           */
+    max-width: 100%;            /* prevent overflow on smaller screens             */
     padding:1.5rem 1.75rem;
     border-radius:10px;
     background:rgba(255,255,255,.08); /* just a *hint* lighter than the bg            */
@@ -4353,6 +4936,7 @@ input, select, textarea {
     margin:2.25rem 0;           /* vertical spacing between cards                    */
     z-index:2;                  /* keeps cards above the centre line                 */
 	text-align: center;
+    overflow: hidden;           /* prevent content from spilling out               */
 }
 
 /* ---------- 4.  Alternating the side ---------- */
@@ -4431,7 +5015,21 @@ input, select, textarea {
 /* ---------------------------------------------------------------
    EXPERIENCE – core wrapper duplicates ABOUT container behaviour
 ---------------------------------------------------------------- */
-.experience-section            { padding: 4rem 2rem; }
+.experience-section            { 
+  padding: 4rem 2rem; 
+  scroll-margin-top: 100px; /* Offset for sticky navbar */
+}
+
+/* Smooth section transitions */
+section[id] {
+  scroll-margin-top: 100px;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Ensure smooth scrolling for all anchor links */
+a[href^="#"] {
+  transition: color 0.2s ease-in-out;
+}
 .experience-container          {
   max-width: 1200px;
   margin: 0 auto;                 /* centres the whole section   */
@@ -4598,6 +5196,7 @@ input, select, textarea {
   position: relative;
   width: 100%;
   min-height: 180px;               /* keeps front & back equal height        */
+  max-height: 500px;               /* prevent cards from getting too tall    */
   transition: transform 0.8s;
   transform-style: preserve-3d;
 }
@@ -4615,7 +5214,8 @@ input, select, textarea {
   backface-visibility: hidden;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;      /* align to top instead of center */
+  padding-top: 1rem;                /* add some top padding          */
 }
 
 /* back side */
@@ -4623,12 +5223,46 @@ input, select, textarea {
   transform: rotateY(180deg);
   text-align: left;
   font-size: .85rem;
-  line-height: 1.45;
-  padding-inline: .25rem;
+  line-height: 1.5;                 /* slightly increased for readability */
+  padding: 1rem .75rem;              /* better padding all around        */
+  overflow-y: auto;                 /* allow scrolling if content is too long */
+  max-height: 100%;                 /* respect parent max-height */
+  overflow-x: hidden;               /* prevent horizontal overflow */
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255,255,255,0.3) transparent;
+}
+
+/* Webkit scrollbar styling for Chrome/Safari */
+.card-back::-webkit-scrollbar {
+  width: 6px;
+}
+
+.card-back::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.card-back::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.3);
+  border-radius: 3px;
+}
+
+.card-back::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.5);
 }
 
 /* make bullet list neat */
-.card-back ul       { margin: 0; padding-left: 1.1rem; }
+.card-back ul       { 
+  margin: 0; 
+  padding-left: 1.1rem; 
+  word-wrap: break-word;            /* break long words */
+  overflow-wrap: break-word;        /* additional word breaking */
+}
+.card-back li { 
+  margin-top: .5rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
 .card-back li + li  { margin-top: .5rem; }
 
 /* ─────────────────────────────────────────────────────────
@@ -4639,6 +5273,7 @@ input, select, textarea {
 	/* 1 ▸ taller canvas for both faces */
 	#experience .flip-card{
 	  min-height: 260px;        /* 260–280 px fits all five cards */
+	  max-height: 400px;        /* prevent cards from getting too tall on mobile    */
 	}
   
 	/* 2 ▸ tighter copy so it wraps sooner */
