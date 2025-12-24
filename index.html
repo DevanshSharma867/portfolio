@@ -36,21 +36,15 @@
  <!-- MINIMALIST STICKY NAV -->
 <header id="navbar">
   <nav class="container">
+    <div class="nav-brand">
+      <a href="#banner">Devansh Sharma</a>
+    </div>
     <ul class="nav-links">
-      <!-- always visible -->
-      <li><a href="#banner">HOME</a></li>
-      <li><a href="#about">ABOUT</a></li>
-
-      <!-- "More ▾" toggle (only shows ≤ 600 px) -->
-      <li class="mobile-more">
-        <button class="nav-toggle" aria-expanded="false">MORE ▾</button>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#about">About</a></li>
+      <li class="nav-resume">
+        <a href="DEVANSH%20SHARMA%20RESUME.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
       </li>
-
-      <!-- extra links (hidden on mobile until toggle) -->
-      <li class="extra"><a href="#experience">EXPERIENCE</a></li>
-      <li class="extra"><a href="#projects">PROJECTS</a></li>
-      <li class="extra"><a href="#skills">SKILLS</a></li>
-      <li class="extra"><a href="#contact">CONTACT</a></li>
     </ul>
   </nav>
 </header>
@@ -61,46 +55,45 @@
   <div id="bg"></div>
   <div id="overlay"></div>
 
-  <section id="banner" class="major">
+  <section id="banner" class="major scroll-section">
     <div class="inner">
       <div id="banner-content">
-        <!-- 1a. Title -->
-        <h1 class="animate-title">Devansh Sharma</h1>
+        <!-- Main Tagline -->
+        <h1 class="hero-tagline">
+          I Build Backend Systems & Data Pipelines<br>
+          <span class="tagline-sub">Evolving into AI & ML</span>
+        </h1>
 
-        <!-- 1b. Subtitle -->
-        <p class="animate-subtitle">
-          Full-Stack Developer • Data Engineer • Applied Machine Learning
+        <!-- Subtitle -->
+        <p class="hero-subtitle">
+          Full-stack developer (Python, React, Node.js).<br>
+          Currently building production-grade data systems and diving into LLMs and RAG to build smarter products.
         </p>
 
-        <!-- 1c. Social / Resume icons -->
-        <nav class="icons animate-icons">
-          <ul>
-            <li>
-              <a href="mailto:deva.09.sharma@gmail.com"
-                 class="icon solid fa-envelope"
-                 title="Email"
-                 target="_blank" rel="noopener noreferrer"></a>
-            </li>
-            <li>
-              <a href="https://www.linkedin.com/in/devansh-sharma-039132269/"
-                 class="icon brands fa-linkedin"
-                 title="LinkedIn"
-                 target="_blank" rel="noopener noreferrer"></a>
-            </li>
-            <li>
-              <a href="https://github.com/DevanshSharma867"
-                 class="icon brands fa-github"
-                 title="GitHub"
-                 target="_blank" rel="noopener noreferrer"></a>
-            </li>
-            <li>
-              <a href="DEVANSH%20SHARMA%20RESUME.pdf"
-                 class="icon solid fa-file-alt"
-                 title="Resume"
-                 target="_blank" rel="noopener noreferrer"></a>
-            </li>
-          </ul>
-        </nav>
+        <!-- Motto -->
+        <p class="hero-motto">Code. Learn. Ship. Repeat.</p>
+
+        <!-- CTA Button -->
+        <a href="#projects" class="hero-cta">Explore My Work</a>
+
+        <!-- Social Links -->
+        <div class="hero-social">
+          <span class="social-label">Let's Connect</span>
+          <div class="social-icons">
+            <a href="https://www.linkedin.com/in/devansh-sharma-039132269/"
+               class="icon brands fa-linkedin"
+               title="LinkedIn"
+               target="_blank" rel="noopener noreferrer"></a>
+            <a href="https://github.com/DevanshSharma867"
+               class="icon brands fa-github"
+               title="GitHub"
+               target="_blank" rel="noopener noreferrer"></a>
+            <a href="mailto:deva.09.sharma@gmail.com"
+               class="icon solid fa-envelope"
+               title="Email"
+               target="_blank" rel="noopener noreferrer"></a>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -113,64 +106,48 @@
     <div id="main">
 
      <!-- About -->
-     <section id="about" class="about-section">
+     <section id="about" class="about-section scroll-section">
       <div class="about-container">
         <!-- Section title -->
-        <h2 class="about-title">ABOUT ME</h2>
-        <hr   class="about-divider" />
+        <h2 class="section-title scroll-heading">About Me</h2>
     
-        <!-- Two-column grid: left = text, right = image -->
-        <div class="about-grid">
-          
-          <!-- Left column: text content -->
-          <div class="about-text">
+        <!-- Content -->
+        <div class="about-content">
+          <div class="about-text scroll-text">
+            <p class="about-intro">
+              I'm a B.E. student passionate about full-stack development and AI. Currently building production-grade backend systems and data pipelines — blending Python, React, and clean design with emerging AI tech like LLMs and RAG.
+            </p>
             
-            <!-- Sub-section heading -->
-            <h3 class="about-subtitle">EDUCATION</h3>
-    
-            <!-- List of education entries -->
-            <ul class="education-list">
-              <li class="education-item">
-                <span class="education-bar"></span>
-                <div class="education-details">
-                  <h4 class="education-degree">B.E. (Hons.) Electrical and Electronics Engineering</h4>
-                  <p class="education-institution">
-                    Aug 2022 – Present, BITS Pilani, Hyderabad Campus<br>
-                    <!-- CGPA: 7.2 -->
-                  </p>
-                </div>
-              </li>
-            </ul>
-    
-            <!-- Descriptive paragraph -->
-            <div class="about-description">
-              <p class="intro-line">I build production-grade backend systems and data pipelines for enterprise environments.</p>
+            <div class="about-details">
+              <div class="about-item">
+                <h3>Education</h3>
+                <p>B.E. (Hons.) Electrical and Electronics Engineering<br>
+                BITS Pilani, Hyderabad Campus<br>
+                Aug 2022 – Present</p>
+              </div>
               
-              <ul class="about-highlights">
-                <li>Backend services, distributed data pipelines, and secure system design across Azure, SAP, and on-prem infrastructure</li>
-                <li>End-to-end traceability and compliance systems with deterministic ingestion and analytics pipelines</li>
-                <li>Real-time analytics and computer vision services that automated quality checks and drove multi-crore annual savings</li>
-                <li>Focus on system architecture, automation, reliability, and correctness in production systems</li>
-              </ul>
-              
-              <p class="closing-line">I solve real-world engineering problems under practical constraints.</p>
+              <div class="about-item">
+                <h3>Current Focus</h3>
+                <p>Building production-grade backend systems and data pipelines for enterprise environments. Working on traceability, compliance, and security systems at ITC.</p>
+              </div>
             </div>
+            
+            <a href="#contact" class="about-cta">More About Me</a>
           </div>
     
-          <!-- Right column: profile image -->
-          <div class="about-image">
+          <!-- Profile image -->
+          <div class="about-image scroll-card">
             <img src="assets/images/profile.png" alt="Devansh Sharma" />
           </div>
-    
         </div>
       </div>
     </section>
 
     <!-- ▸▸ EXPERIENCE – Simple Vertical List ▸▸ -->
-<section id="experience" class="experience-section">
+<section id="experience" class="experience-section scroll-section" style="display: none;">
   <div class="experience-container">
-    <h2 class="about-title">EXPERIENCE</h2>
-    <hr class="about-divider" />
+    <h2 class="about-title scroll-heading">EXPERIENCE</h2>
+    <hr class="about-divider scroll-heading" />
 
     <div class="experience-flow">
 
@@ -246,178 +223,159 @@
     
     
       <!-- Projects -->
-      <section id="projects" class="special">
-        <div class="experience-container">
-          <h2 class="about-title">PROJECTS</h2>
-          <hr class="about-divider" />
-        </div>
-        <div class="tiles">
-          <article>
-            <span class="image">
-              <img src="assets/images/qna-chatbot.jpg"
-                   alt="Smart QnA Chatbot">
-            </span>
-          
-            <!-- new wrapper -->
-            <div class="content">
-              <h3>Smart QnA Chatbot</h3>
-          
-              <!-- placeholder text you can replace later -->
-              <p class="desc">
-                Built a retrieval-augmented chatbot enabling natural language queries over structured data using RAG and SQL agents. Integrated vector store and SQLite backend with Streamlit UI, enabling faster decision-making through natural language access to data.
+      <section id="projects" class="projects-section scroll-section">
+        <div class="projects-container">
+          <h2 class="section-title scroll-heading">Featured Projects</h2>
+        <div class="projects-grid">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">Smart QnA Chatbot</h3>
+              <p class="project-description">
+                A retrieval-augmented chatbot enabling natural language queries over structured data using RAG and SQL agents. Integrated vector store and SQLite backend with Streamlit UI, enabling faster decision-making through natural language access to data.
               </p>
-          
-              <!-- tech-stack tags -->
-              <div class="tags">
-                <span>Streamlit</span>
-                <span>Python</span>
-                <span>RAG</span>
-                <span>SQL Agents</span>
-                <span>LLMs</span>
+              <div class="project-tech">
+                <span class="tech-tag">Streamlit</span>
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">RAG</span>
+                <span class="tech-tag">SQL Agents</span>
+                <span class="tech-tag">LLMs</span>
               </div>
             </div>
-          
-            <!-- keeps the whole card clickable -->
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/Smart-QnA-Chatbot" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/Smart-QnA-Chatbot" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
 
-          <article>
-            <span class="image">
-              <img src="assets/images/incident_and_alert_data_analysitcs.jpg" alt="Incident and Alert Data Analytics">
-            </span>
-            <div class="content">
-              <h3>Incident and Alert Data Analytics</h3>
-              <p class="desc">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">Incident and Alert Data Analytics</h3>
+              <p class="project-description">
                 Developed modular EDA pipelines automating data loading, cleaning, profiling, and JSON output generation for downstream analytics. Reduced manual analysis time by up to 75% automating profiling and validation workflows for alert datasets.
               </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>Pandas</span>
-                <span>ydata profiling</span>
-                <span>JSON Pipelines</span>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Pandas</span>
+                <span class="tech-tag">ydata profiling</span>
+                <span class="tech-tag">JSON Pipelines</span>
               </div>
             </div>
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/EDA-of-Alert-Data" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/EDA-of-Alert-Data" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
-          <article>
-            <span class="image">
-              <img src="assets/images/alert_clustering.png" alt="Clustering and Pattern Recognition">
-            </span>
-            <div class="content">
-              <h3>Clustering and Pattern Recognition</h3>
-              <p class="desc">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">Clustering and Pattern Recognition</h3>
+              <p class="project-description">
                 Implemented scalable clustering and pattern recognition pipelines over large alert datasets using TF-IDF and DBSCAN. Built tuning utilities for parameter optimization and export pipelines, improving cluster coherence and reducing false positives.
               </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>DBSCAN</span>
-                <span>TF-IDF</span>
-                <span>Machine Learning</span>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">DBSCAN</span>
+                <span class="tech-tag">TF-IDF</span>
+                <span class="tech-tag">Machine Learning</span>
               </div>
             </div>
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/Clustering-and-Pattern-Recognition-in-Alert-Data" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/Clustering-and-Pattern-Recognition-in-Alert-Data" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
-          <article>
-            <span class="image">
-              <img src="assets/images/spotify image emotion detector.jpg" alt="Facial Emotion Recognition">
-            </span>
-            <div class="content">
-              <h3>Facial Emotion Recognition with Music Recommendation</h3>
-              <p class="desc">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">Facial Emotion Recognition with Music Recommendation</h3>
+              <p class="project-description">
                 Trained CNN models for emotion recognition using FER-2013 and RAF-DB datasets, improving accuracy to around 70% through data augmentation and regularization. Linked emotion recognition output to a music recommendation engine, demonstrating end-to-end ML system design.
               </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>Keras</span>
-                <span>TensorFlow</span>
-                <span>CNN</span>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Keras</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">CNN</span>
               </div>
             </div>
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/Facial-Emotion-Recognition-with-Music-Recommendation" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/Facial-Emotion-Recognition-with-Music-Recommendation" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
-          <article>
-            <span class="image">
-              <img src="assets/images/udise_data_analysis.png" alt="Nationwide UDISE+ Data Analysis">
-            </span>
-            <div class="content">
-              <h3>Nationwide UDISE+ Data Analysis</h3>
-              <p class="desc">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">Nationwide UDISE+ Data Analysis</h3>
+              <p class="project-description">
                 Performed district-level geospatial analysis using UDISE+ datasets and QGIS visualization. Identified 300+ high-similarity districts using Z-score Normalized Euclidean Distance to aid data-driven education policy formulation.
               </p>
-              <div class="tags">
-                <span>Python</span>
-                <span>GeoPandas</span>
-                <span>QGIS</span>
-                <span>Data Analysis</span>
+              <div class="project-tech">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">GeoPandas</span>
+                <span class="tech-tag">QGIS</span>
+                <span class="tech-tag">Data Analysis</span>
               </div>
             </div>
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/UDISE-data-analysis" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/UDISE-data-analysis" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
-          <article>
-            <span class="image">
-              <img src="assets/images/fitness_tracker.jpg" alt="Fitness Tracker">
-            </span>
-            <div class="content">
-              <h3>Fitness Tracker</h3>
-              <p class="desc">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">Fitness Tracker</h3>
+              <p class="project-description">
                 React-based workout tracker with reusable components and responsive UI for managing fitness activities and progress tracking.
               </p>
-              <div class="tags">
-                <span>React</span>
-                <span>JavaScript</span>
-                <span>Web Development</span>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Web Development</span>
               </div>
             </div>
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/Fitness-Tracker" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/Fitness-Tracker" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
-          <article>
-            <span class="image">
-              <img src="assets/images/recipe_app.jpg" alt="Recipe Discovery App">
-            </span>
-            <div class="content">
-              <h3>Recipe Discovery App</h3>
-              <p class="desc">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">Recipe Discovery App</h3>
+              <p class="project-description">
                 Recipe discovery app with search and filtering capabilities using Spoonacular API. Built with React and public APIs for seamless recipe browsing and management.
               </p>
-              <div class="tags">
-                <span>React</span>
-                <span>Spoonacular API</span>
-                <span>REST APIs</span>
+              <div class="project-tech">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">Spoonacular API</span>
+                <span class="tech-tag">REST APIs</span>
               </div>
             </div>
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/Recipe-app" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/Recipe-app" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
-          <article>
-            <span class="image">
-              <img src="assets/images/nba_manager.jpg" alt="NBA Manager">
-            </span>
-            <div class="content">
-              <h3>NBA Manager</h3>
-              <p class="desc">
+          <article class="project-card scroll-card">
+            <div class="project-content">
+              <h3 class="project-title">NBA Manager</h3>
+              <p class="project-description">
                 Sports management system with CRUD operations and leaderboard visualization. Built using Java and MySQL for comprehensive team and player management.
               </p>
-              <div class="tags">
-                <span>Java</span>
-                <span>MySQL</span>
-                <span>Desktop Application</span>
+              <div class="project-tech">
+                <span class="tech-tag">Java</span>
+                <span class="tech-tag">MySQL</span>
+                <span class="tech-tag">Desktop Application</span>
               </div>
             </div>
-            <!-- <a href="project-template.html" class="link primary"></a> -->
-            <a href="https://github.com/DevanshSharma867/NBA-Manager" class="link primary"></a>
+            <a href="https://github.com/DevanshSharma867/NBA-Manager" 
+               class="project-link" 
+               target="_blank" 
+               rel="noopener noreferrer">View Project</a>
           </article>
           
         </div>
@@ -427,106 +385,159 @@
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.16.0/devicon.min.css">
 
-<section id="skills" class="special">
-  <div class="inner">
-    <header class="major"><h2>Skills</h2></header>
-  </div>
+<section id="skills" class="tech-stack-section scroll-section">
+  <div class="tech-stack-container">
+    <h2 class="section-title scroll-heading">Tech Stack</h2>
 
-  <!-- Direct grid (no outer “panel” box) -->
-  <ul class="skills-grid">
+  <!-- Capability-based groups -->
+  <ul class="tech-stack-grid">
 
-    <!-- Languages & Databases -->
-    <li class="skill-card">
-      <h3>Languages & Databases</h3>
-      <div class="icon-set">
-        <span class="icon" title="Python"><i class="devicon-python-plain colored"></i></span>
-        <span class="icon" title="Java"><i class="devicon-java-plain colored"></i></span>
-        <span class="icon" title="JavaScript"><i class="devicon-javascript-plain colored"></i></span>
-        <span class="icon" title="TypeScript"><i class="devicon-typescript-plain colored"></i></span>
-        <span class="icon" title="C++"><i class="devicon-cplusplus-plain colored"></i></span>
-        <span class="icon" title="HTML5"><i class="devicon-html5-plain colored"></i></span>
-        <span class="icon" title="CSS3"><i class="devicon-css3-plain colored"></i></span>
-        <span class="icon" title="MySQL"><i class="devicon-mysql-plain colored"></i></span>
-        <span class="icon" title="MongoDB"><i class="devicon-mongodb-plain colored"></i></span>
-        <span class="icon" title="SQL"><i class="devicon-postgresql-plain colored"></i></span>
+    <!-- Backend & Systems -->
+    <li class="tech-item scroll-card">
+      <span class="tech-name">Backend & Systems</span>
+      <div class="tech-content">
+        <div class="tech-capabilities">
+          <div class="capability-label">Capabilities</div>
+          <div class="capability-list">
+            <span>REST APIs</span>
+            <span>Auth (JWT / RBAC)</span>
+            <span>System Design</span>
+            <span>Distributed Pipelines</span>
+            <span>SQL Optimization</span>
+          </div>
+        </div>
+        <div class="tech-tools">
+          <div class="tool-label">Technologies</div>
+          <div class="tool-list">
+            <span class="icon" title="Express"><i class="devicon-express-original colored"></i></span>
+            <span class="icon" title="Python"><i class="devicon-python-plain colored"></i></span>
+            <span class="icon" title="MySQL"><i class="devicon-mysql-plain colored"></i></span>
+          </div>
+        </div>
       </div>
     </li>
 
-    <!-- Frameworks & Libraries -->
-    <li class="skill-card">
-      <h3>Frameworks & Libraries</h3>
-      <div class="icon-set">
-        <span class="icon" title="React"><i class="devicon-react-original colored"></i></span>
-        <span class="icon" title="Node.js"><i class="devicon-nodejs-plain colored"></i></span>
-        <span class="icon" title="Express"><i class="devicon-express-original colored"></i></span>
-        <span class="icon" title="NumPy"><i class="devicon-numpy-plain colored"></i></span>
-        <span class="icon" title="Pandas"><i class="devicon-pandas-plain-wordmark colored"></i></span>
-        <span class="icon" title="TensorFlow"><i class="devicon-tensorflow-original colored"></i></span>
-        <span class="icon" title="Keras"><i class="devicon-keras-plain colored"></i></span>
-        <span class="icon" title="Scikit-learn"><i class="devicon-scikitlearn-plain colored"></i></span>
-        <span class="icon" title="OpenCV"><i class="devicon-opencv-plain colored"></i></span>
-        <span class="icon" title="Matplotlib"><i class="devicon-matplotlib-plain colored"></i></span>
+    <!-- Data Engineering -->
+    <li class="tech-item scroll-card">
+      <span class="tech-name">Data Engineering</span>
+      <div class="tech-content">
+        <div class="tech-capabilities">
+          <div class="capability-label">Capabilities</div>
+          <div class="capability-list">
+            <span>ETL / ELT Pipelines</span>
+            <span>Schema Design</span>
+            <span>ACID Transactions</span>
+            <span>Batch Processing</span>
+            <span>Spatial Data</span>
+          </div>
+        </div>
+        <div class="tech-tools">
+          <div class="tool-label">Technologies</div>
+          <div class="tool-list">
+            <span class="icon" title="Pandas"><i class="devicon-pandas-plain-wordmark colored"></i></span>
+            <span class="icon" title="NumPy"><i class="devicon-numpy-plain colored"></i></span>
+            <span class="icon" title="MongoDB"><i class="devicon-mongodb-plain colored"></i></span>
+          </div>
+        </div>
       </div>
     </li>
 
-    <!-- Tools & Cloud -->
-    <li class="skill-card">
-      <h3>Tools & Cloud</h3>
-      <div class="icon-set">
-        <span class="icon" title="Azure"><i class="devicon-azure-plain colored"></i></span>
-        <span class="icon" title="Docker"><i class="devicon-docker-plain colored"></i></span>
-        <span class="icon" title="Git"><i class="devicon-git-plain colored"></i></span>
-        <span class="icon" title="Tableau"><img src="assets/images/tableau.svg" alt="Tableau"></span>
-        <span class="icon" title="Jupyter"><i class="devicon-jupyter-plain colored"></i></span>
-        <span class="icon" title="Linux"><i class="devicon-linux-plain colored"></i></span>
-        <span class="icon" title="REST APIs"><i class="devicon-postgresql-plain colored"></i></span>
+    <!-- Machine Learning & GenAI -->
+    <li class="tech-item scroll-card">
+      <span class="tech-name">Machine Learning & GenAI</span>
+      <div class="tech-content">
+        <div class="tech-capabilities">
+          <div class="capability-label">Capabilities</div>
+          <div class="capability-list">
+            <span>RAG Pipelines</span>
+            <span>Model Evaluation</span>
+            <span>Data Preprocessing</span>
+            <span>LLM Integration</span>
+          </div>
+        </div>
+        <div class="tech-tools">
+          <div class="tool-label">Technologies</div>
+          <div class="tool-list">
+            <span class="icon" title="TensorFlow"><i class="devicon-tensorflow-original colored"></i></span>
+            <span class="icon" title="Scikit-learn"><i class="devicon-scikitlearn-plain colored"></i></span>
+            <span class="icon" title="Keras"><i class="devicon-keras-plain colored"></i></span>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <!-- Cloud & Infrastructure -->
+    <li class="tech-item scroll-card">
+      <span class="tech-name">Cloud & Infrastructure</span>
+      <div class="tech-content">
+        <div class="tech-capabilities">
+          <div class="capability-label">Capabilities</div>
+          <div class="capability-list">
+            <span>CI/CD</span>
+            <span>Cloud Storage</span>
+            <span>Containerization</span>
+            <span>On-Prem Deployments</span>
+          </div>
+        </div>
+        <div class="tech-tools">
+          <div class="tool-label">Technologies</div>
+          <div class="tool-list">
+            <span class="icon" title="Azure"><i class="devicon-azure-plain colored"></i></span>
+            <span class="icon" title="Docker"><i class="devicon-docker-plain colored"></i></span>
+            <span class="icon" title="Linux"><i class="devicon-linux-plain colored"></i></span>
+          </div>
+        </div>
+      </div>
+    </li>
+
+    <!-- Frontend -->
+    <li class="tech-item scroll-card">
+      <span class="tech-name">Frontend</span>
+      <div class="tech-content">
+        <div class="tech-capabilities">
+          <div class="capability-label">Capabilities</div>
+          <div class="capability-list">
+            <span>Component Architecture</span>
+            <span>Responsive Design</span>
+            <span>Type-Safe Development</span>
+          </div>
+        </div>
+        <div class="tech-tools">
+          <div class="tool-label">Technologies</div>
+          <div class="tool-list">
+            <span class="icon" title="React"><i class="devicon-react-original colored"></i></span>
+            <span class="icon" title="TypeScript"><i class="devicon-typescript-plain colored"></i></span>
+            <span class="icon" title="JavaScript"><i class="devicon-javascript-plain colored"></i></span>
+          </div>
+        </div>
       </div>
     </li>
 
   </ul>
+  </div>
 </section>
 
 
 
 
 <!-- ▸ FOOTER / CONTACT SECTION  ▸–––––––––––––––––––––––––––––––––– -->
-<footer id="footer" class="footer-revamp">
+<footer id="footer" class="footer-revamp scroll-section">
   <div class="footer-inner">
 
     <!-- anchor so #contact in the navbar scrolls here -->
     <a id="contact" tabindex="-1" aria-hidden="true"></a>
 
-    <!-- SECTION TITLE – mirrors the experience heading -->
-    <div class="contact-header">
-      <h2 class="about-title">CONTACT</h2>
-      <hr class="about-divider" />
-    </div>
-
-    <!-- EMAIL  |  PHONE -->
-    <div class="contact-details">
-      <p class="email">
-        <a href="mailto:deva.09.sharma@gmail.com">deva.09.sharma@gmail.com</a>
-      </p>
-      <p class="phone">
-        <a href="tel:+918310201301">+91 8310201301</a>
-      </p>
-    </div>
-
-    <!-- SOCIAL ICONS -->
-    <div class="social">
-      <a href="https://www.linkedin.com/in/devansh-sharma-039132269/"
-         class="icon brands alt fa-linkedin"
-         aria-label="LinkedIn"></a>
-      <a href="https://github.com/DevanshSharma867"
-         class="icon brands alt fa-github"
-         aria-label="GitHub"></a>
-    </div>
-
     <!-- COPYRIGHT -->
-    <ul class="copyright">
-      <li>&copy; Devansh Sharma</li>
-      <li>Design base: <a href="https://html5up.net">HTML5 UP</a></li>
-    </ul>
+    <div class="footer-content">
+      <p>&copy; 2025 Devansh Sharma. All Rights Reserved.</p>
+      
+      <!-- FOOTER LINKS -->
+      <div class="footer-links">
+        <a href="DEVANSH%20SHARMA%20RESUME.pdf" target="_blank" rel="noopener noreferrer">Resume</a>
+        <a href="https://www.linkedin.com/in/devansh-sharma-039132269/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://github.com/DevanshSharma867" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
 
   </div>
 </footer>

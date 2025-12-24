@@ -374,23 +374,249 @@ function updateActiveLink() {
 window.addEventListener('scroll', updateActiveLink);
 window.addEventListener('load',  updateActiveLink);
 
-document.addEventListener('DOMContentLoaded', function() {
-	// grab each direct child of the grid
-	const items = document.querySelectorAll('.about-grid > *');
+// ─── Smooth Navigation Transitions ───
+(function() {
+  'use strict';
   
-	const observer = new IntersectionObserver((entries, obs) => {
+  let isNavigating = false;
+  // Get navbar height from CSS variable or fallback
+  const navbar = document.querySelector('#navbar');
+  const navbarHeight = navbar ? navbar.offsetHeight : 56;
+  
+  // Get all navigation links
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+  const sections = document.querySelectorAll('section[id], #banner-wrapper, footer[id]');
+  
+  // Smooth scroll function with transitions
+  function smoothNavigate(targetId) {
+    if (isNavigating) return;
+    isNavigating = true;
+    
+    const targetElement = document.querySelector(targetId);
+    if (!targetElement) {
+      isNavigating = false;
+      return;
+    }
+    
+    // Find current active section
+    let currentSection = null;
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      if (rect.top <= navbarHeight + 100 && rect.bottom >= navbarHeight + 100) {
+        currentSection = section;
+      }
+    });
+    
+    // If clicking on same section, do nothing
+    if (currentSection && targetElement.contains(currentSection) || 
+        (targetId === '#banner' && currentSection && currentSection.id === 'banner-wrapper')) {
+      isNavigating = false;
+      return;
+    }
+    
+    // Add navigating class to body
+    document.body.classList.add('navigating');
+    
+    // Fade out current section
+    if (currentSection) {
+      currentSection.classList.add('transitioning-out');
+      currentSection.classList.remove('scroll-in');
+    }
+    
+    // Calculate target position
+    let targetPosition;
+    if (targetId === '#banner' || targetId === '#home') {
+      targetPosition = 0;
+    } else {
+      const targetRect = targetElement.getBoundingClientRect();
+      targetPosition = window.pageYOffset + targetRect.top - navbarHeight;
+    }
+    
+    // Wait for fade-out, then scroll and fade-in
+    setTimeout(() => {
+      // Scroll to target
+      window.scrollTo({
+        top: targetPosition,
+        behavior: 'smooth'
+      });
+      
+      // Find target section
+      let targetSection = targetElement;
+      if (targetId === '#banner' || targetId === '#home') {
+        targetSection = document.querySelector('#banner-wrapper') || document.querySelector('#banner');
+      } else if (targetId === '#contact') {
+        // Contact is in footer
+        targetSection = document.querySelector('#footer') || targetElement;
+      } else {
+        // Find the section that contains or is the target
+        sections.forEach(section => {
+          if (section.contains(targetElement) || section === targetElement) {
+            targetSection = section;
+          }
+        });
+      }
+      
+      // Fade in target section
+      if (targetSection) {
+        targetSection.classList.add('transitioning-in', 'active');
+        
+        // Trigger scroll animations if not already triggered
+        if (!targetSection.classList.contains('scroll-in')) {
+          targetSection.classList.add('scroll-in');
+          
+          // Trigger child animations
+          const heading = targetSection.querySelectorAll('.scroll-heading');
+          const text = targetSection.querySelectorAll('.scroll-text');
+          const cards = targetSection.querySelectorAll('.scroll-card');
+          
+          setTimeout(() => {
+            heading.forEach((el, i) => {
+              setTimeout(() => el.classList.add('scroll-in'), 50 * i);
+            });
+            text.forEach((el, i) => {
+              setTimeout(() => el.classList.add('scroll-in'), 100 + (30 * i));
+            });
+            cards.forEach((el) => {
+              el.classList.add('scroll-in');
+            });
+          }, 300);
+        }
+      }
+      
+      // Clean up after transition
+      setTimeout(() => {
+        if (currentSection) {
+          currentSection.classList.remove('transitioning-out');
+        }
+        if (targetSection) {
+          targetSection.classList.remove('transitioning-in');
+        }
+        document.body.classList.remove('navigating');
+        isNavigating = false;
+        
+        // Update active nav link
+        updateActiveLink();
+      }, 700);
+      
+    }, 200); // Overlap: start fade-in before fade-out completes
+  }
+  
+  // Update URL without scrolling (for browser history)
+  function updateURL(hash) {
+    if (history.pushState) {
+      history.pushState(null, null, hash);
+    }
+  }
+  
+  // Attach click handlers to all nav links
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      
+      // Update URL for browser history
+      updateURL(targetId);
+      
+      // Navigate with smooth transition
+      smoothNavigate(targetId);
+      
+      // Close mobile menu if open
+      const nav = document.querySelector('.nav-links');
+      if (nav && nav.classList.contains('mobile-open')) {
+        nav.classList.remove('mobile-open');
+        const toggle = document.querySelector('.nav-toggle');
+        if (toggle) {
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      }
+    });
+  });
+  
+  // Handle browser back/forward buttons
+  window.addEventListener('popstate', function(e) {
+    const hash = window.location.hash;
+    if (hash) {
+      smoothNavigate(hash);
+    }
+  });
+  
+})();
+
+// ─── Scroll-Triggered Animations ───
+document.addEventListener('DOMContentLoaded', function() {
+	// Intersection Observer for sections
+	const sectionObserver = new IntersectionObserver((entries, obs) => {
 	  entries.forEach(entry => {
 		if (entry.isIntersecting) {
-		  // add the class that triggers our CSS transition
-		  entry.target.classList.add('in-view');
-		  // stop observing once it’s in view
+		  // Only add scroll-in if not already added (to avoid re-animating)
+		  if (!entry.target.classList.contains('scroll-in')) {
+			entry.target.classList.add('scroll-in');
+			
+			// Trigger child animations with stagger
+			const heading = entry.target.querySelectorAll('.scroll-heading');
+			const text = entry.target.querySelectorAll('.scroll-text');
+			const cards = entry.target.querySelectorAll('.scroll-card');
+			
+			// Animate headings first (small delay between each)
+			heading.forEach((el, i) => {
+			  if (!el.classList.contains('scroll-in')) {
+				setTimeout(() => el.classList.add('scroll-in'), 50 * i);
+			  }
+			});
+			
+			// Then text (slightly longer delay)
+			text.forEach((el, i) => {
+			  if (!el.classList.contains('scroll-in')) {
+				setTimeout(() => el.classList.add('scroll-in'), 100 + (30 * i));
+			  }
+			});
+			
+			// Cards already have staggered delays in CSS
+			cards.forEach((el) => {
+			  if (!el.classList.contains('scroll-in')) {
+				el.classList.add('scroll-in');
+			  }
+			});
+		  }
+		  // Keep observing so content stays visible when scrolling back
+		} else {
+		  // When section leaves viewport, ensure it stays visible if it was already shown
+		  // Don't remove scroll-in class - keep content visible
+		}
+	  });
+	}, {
+	  threshold: 0.15,  // Trigger when 15% visible
+	  rootMargin: '0px 0px -50px 0px'  // Start slightly before fully in view
+	});
+  
+	// Observe all scroll sections (except hero which should be visible immediately)
+	const sections = document.querySelectorAll('.scroll-section:not(#banner)');
+	sections.forEach(section => {
+	  sectionObserver.observe(section);
+	});
+	
+	// Hero section should be visible immediately (no scroll animation)
+	const banner = document.querySelector('#banner.scroll-section');
+	if (banner) {
+	  banner.classList.add('scroll-in');
+	}
+	
+	// Also observe experience items individually for stagger
+	const experienceItems = document.querySelectorAll('.experience-item');
+	const itemObserver = new IntersectionObserver((entries, obs) => {
+	  entries.forEach(entry => {
+		if (entry.isIntersecting) {
+		  entry.target.classList.add('scroll-in');
 		  obs.unobserve(entry.target);
 		}
 	  });
 	}, {
-	  threshold: 0.1   // fire when 10% of the element is visible
+	  threshold: 0.2,
+	  rootMargin: '0px 0px -30px 0px'
 	});
-  
-	items.forEach(item => observer.observe(item));
+	
+	experienceItems.forEach(item => {
+	  itemObserver.observe(item);
+	});
   });
 
