@@ -618,5 +618,17 @@ document.addEventListener('DOMContentLoaded', function() {
 	experienceItems.forEach(item => {
 	  itemObserver.observe(item);
 	});
-  });
+	
+	// Experience card expand/collapse on mobile (tap)
+	const experienceCards = document.querySelectorAll('.experience-card');
+	experienceCards.forEach(card => {
+	  card.addEventListener('click', function(e) {
+		// Only handle on mobile/touch devices
+		if (window.innerWidth <= 768) {
+		  e.preventDefault();
+		  this.classList.toggle('expanded');
+		}
+	  });
+	});
+});
 

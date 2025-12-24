@@ -3796,8 +3796,8 @@ input, select, textarea {
   .nav-brand a {
 	color: #fff;
 	text-decoration: none;
-	font-weight: 500;
-	font-size: 1rem;
+	font-weight: 700;
+	font-size: 1.50rem;
 	opacity: 0.85;
 	transition: opacity 0.3s ease, color 0.3s ease;
 	letter-spacing: 0.02em;
@@ -6549,6 +6549,290 @@ html{ color-scheme: dark; }
   max-width: 100%;
   border-radius: 12px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Experience Section */
+.experience-section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.experience-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.experience-timeline {
+  position: relative;
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+/* Subtle vertical timeline line */
+.timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateX(-50%);
+  transition: background 0.3s ease;
+  z-index: 0;
+}
+
+/* Timeline line brightens when hovering over timeline container */
+.experience-timeline:hover .timeline-line {
+  background: rgba(167, 139, 250, 0.12);
+}
+
+.experience-list {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  z-index: 1;
+}
+
+.experience-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: 3px solid rgba(167, 139, 250, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  padding-left: 1.75rem;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  overflow: hidden;
+  max-height: 200px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  width: 45%;
+  max-width: 500px;
+}
+
+/* Alternating layout - Right side cards */
+.experience-right {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* Alternating layout - Left side cards */
+.experience-left {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Vertical offset for natural flow - stagger cards */
+.experience-list .experience-card:nth-child(1) {
+  margin-top: 0;
+}
+
+.experience-list .experience-card:nth-child(2) {
+  margin-top: 2.5rem;
+}
+
+.experience-list .experience-card:nth-child(3) {
+  margin-top: 1.5rem;
+}
+
+/* Left accent bar animation */
+.experience-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 0;
+  background: #a78bfa;
+  transition: height 0.4s ease;
+  z-index: 1;
+}
+
+/* Desktop: expand on hover */
+@media (min-width: 769px) {
+  .experience-card:hover {
+    max-height: 500px;
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.15);
+    border-left-color: rgba(167, 139, 250, 0.3);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    width: 48%;
+  }
+  
+  .experience-card:hover::before {
+    height: 100%;
+  }
+  
+  /* Improve text contrast when expanded */
+  .experience-card:hover .experience-company {
+    color: #fff;
+  }
+  
+  .experience-card:hover .experience-role {
+    color: #b794f6;
+  }
+  
+  .experience-card:hover .experience-bullets li {
+    opacity: 0.9;
+    color: #e0e0e0;
+  }
+}
+
+/* Mobile: expand on tap (expanded class) */
+.experience-card.expanded {
+  max-height: 600px;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.15);
+  border-left-color: rgba(167, 139, 250, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.experience-card.expanded::before {
+  height: 100%;
+}
+
+/* Improve text contrast when expanded */
+.experience-card.expanded .experience-company {
+  color: #fff;
+}
+
+.experience-card.expanded .experience-role {
+  color: #b794f6;
+}
+
+.experience-card.expanded .experience-bullets li {
+  opacity: 0.9;
+  color: #e0e0e0;
+}
+
+.experience-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.experience-company {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+
+.experience-role {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #a78bfa;
+}
+
+.experience-duration {
+  font-size: 0.9rem;
+  color: #d0d0d0;
+  opacity: 0.8;
+}
+
+.experience-summary {
+  font-size: 0.95rem;
+  color: #d0d0d0;
+  margin-top: 0.5rem;
+  line-height: 1.6;
+  opacity: 0.85;
+  font-style: italic;
+}
+
+.experience-details {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  margin-top: 0;
+  transform: translateY(-5px);
+  transition: max-height 0.4s ease, opacity 0.4s ease 0.1s, margin-top 0.4s ease, transform 0.4s ease 0.1s;
+}
+
+/* Desktop: show on hover */
+@media (min-width: 769px) {
+  .experience-card:hover .experience-details {
+    max-height: 300px;
+    opacity: 1;
+    margin-top: 1.5rem;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile: show when expanded */
+.experience-card.expanded .experience-details {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 1.5rem;
+  transform: translateY(0);
+}
+
+.experience-bullets {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.experience-bullets li {
+  font-size: 0.95rem;
+  color: #d0d0d0;
+  opacity: 0.75;
+  line-height: 1.8;
+  padding-left: 1.25rem;
+  position: relative;
+  font-weight: 400;
+}
+
+.experience-bullets li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #a78bfa;
+  opacity: 0.5;
+  font-weight: 400;
+}
+
+/* Mobile: tap to expand - stack vertically */
+@media (max-width: 768px) {
+  .experience-timeline {
+    padding: 1rem 0;
+  }
+  
+  .timeline-line {
+    display: none; /* Hide timeline on mobile for cleaner look */
+  }
+  
+  .experience-list {
+    gap: 2rem;
+  }
+  
+  .experience-card {
+    max-height: 180px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    margin-top: 0 !important;
+  }
+  
+  .experience-card.expanded {
+    max-height: 600px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.09);
+    border-color: rgba(255, 255, 255, 0.15);
+    border-left-color: rgba(167, 139, 250, 0.3);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+  
+  .experience-card:active {
+    background: rgba(255, 255, 255, 0.09);
+  }
 }
 
 /* Tech Stack Section */
